@@ -1,0 +1,12 @@
+C:\Users\junin\Documents\GitHub\A-Star-Search---Pathfinding\A-star Search Algorithm\A-star Search Algorithm\bin\Debug\netcoreapp3.1\A-star Search Algorithm.exe
+C:\Users\junin\Documents\GitHub\A-Star-Search---Pathfinding\A-star Search Algorithm\A-star Search Algorithm\bin\Debug\netcoreapp3.1\A-star Search Algorithm.deps.json
+C:\Users\junin\Documents\GitHub\A-Star-Search---Pathfinding\A-star Search Algorithm\A-star Search Algorithm\bin\Debug\netcoreapp3.1\A-star Search Algorithm.runtimeconfig.json
+C:\Users\junin\Documents\GitHub\A-Star-Search---Pathfinding\A-star Search Algorithm\A-star Search Algorithm\bin\Debug\netcoreapp3.1\A-star Search Algorithm.runtimeconfig.dev.json
+C:\Users\junin\Documents\GitHub\A-Star-Search---Pathfinding\A-star Search Algorithm\A-star Search Algorithm\bin\Debug\netcoreapp3.1\A-star Search Algorithm.dll
+C:\Users\junin\Documents\GitHub\A-Star-Search---Pathfinding\A-star Search Algorithm\A-star Search Algorithm\bin\Debug\netcoreapp3.1\A-star Search Algorithm.pdb
+C:\Users\junin\Documents\GitHub\A-Star-Search---Pathfinding\A-star Search Algorithm\A-star Search Algorithm\obj\Debug\netcoreapp3.1\A-star Search Algorithm.AssemblyInfoInputs.cache
+C:\Users\junin\Documents\GitHub\A-Star-Search---Pathfinding\A-star Search Algorithm\A-star Search Algorithm\obj\Debug\netcoreapp3.1\A-star Search Algorithm.AssemblyInfo.cs
+C:\Users\junin\Documents\GitHub\A-Star-Search---Pathfinding\A-star Search Algorithm\A-star Search Algorithm\obj\Debug\netcoreapp3.1\A-star Search Algorithm.csproj.CoreCompileInputs.cache
+C:\Users\junin\Documents\GitHub\A-Star-Search---Pathfinding\A-star Search Algorithm\A-star Search Algorithm\obj\Debug\netcoreapp3.1\A-star Search Algorithm.dll
+C:\Users\junin\Documents\GitHub\A-Star-Search---Pathfinding\A-star Search Algorithm\A-star Search Algorithm\obj\Debug\netcoreapp3.1\A-star Search Algorithm.pdb
+C:\Users\junin\Documents\GitHub\A-Star-Search---Pathfinding\A-star Search Algorithm\A-star Search Algorithm\obj\Debug\netcoreapp3.1\A-star Search Algorithm.genruntimeconfig.cache
