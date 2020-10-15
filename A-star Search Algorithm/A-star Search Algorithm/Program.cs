@@ -11,7 +11,7 @@ namespace A_star_Search_Algorithm
             List<string> map = new List<string>
             {
                 "A       5  ",
-                "--| |------",
+                "030 0000000",
                 "           ",
                 "   |----|  ",
                 "   |    | B",
@@ -107,13 +107,25 @@ namespace A_star_Search_Algorithm
 
             possibleTiles.ForEach(tile => tile.SetDistance(targetTile.X, targetTile.Y));
 
+
             var maxX = map.First().Length - 1;
             var maxY = map.Count - 1;
+
+            int aux = 0;
+            foreach (var t in possibleTiles)
+            {
+                if (t.X >= 0 && t.X <= maxX && t.Y >= 0 && t.Y <= maxY)
+                {
+                    if (map[t.Y][t.X] == '3') possibleTiles.ElementAt(aux).Cost += -1;
+                }
+
+                aux += 1;
+            }
 
             return possibleTiles
                     .Where(tile => tile.X >= 0 && tile.X <= maxX)
                     .Where(tile => tile.Y >= 0 && tile.Y <= maxY)
-                    .Where(tile => map[tile.Y][tile.X] == ' ' || map[tile.Y][tile.X] == 'B')
+                    .Where(tile => map[tile.Y][tile.X] == ' ' || map[tile.Y][tile.X] == 'B' || map[tile.Y][tile.X] == '3')
                     .ToList();
         }
     }
