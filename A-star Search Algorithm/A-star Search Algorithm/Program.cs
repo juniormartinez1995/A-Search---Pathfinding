@@ -112,11 +112,12 @@ namespace A_star_Search_Algorithm
             var maxY = map.Count - 1;
 
             int aux = 0;
+            //Adiciona custos não genéricos para diferentes tiles do mapa
             foreach (var t in possibleTiles)
             {
                 if (t.X >= 0 && t.X <= maxX && t.Y >= 0 && t.Y <= maxY)
                 {
-                    if (map[t.Y][t.X] == '3') possibleTiles.ElementAt(aux).Cost += -1;
+                    if (map[t.Y][t.X] == '3') possibleTiles.ElementAt(aux).Cost += 10; //Substituir o 10 por uma variável que armazena o valor do custo daquela celula
                 }
 
                 aux += 1;
