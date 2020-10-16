@@ -16,16 +16,16 @@ namespace A_star_Search_Algorithm
 
             List<String> map = m.GenerateMap();
 
-            //AuxChars.Contains('B')
-
             var start = new Tile();
             start.Y = map.FindIndex(x => x.Contains("B"));
             start.X = map[start.Y].IndexOf("B");
 
 
+
+
             var finish = new Tile();
-            finish.Y = map.FindIndex(x => x.Contains("U"));
-            finish.X = map[finish.Y].IndexOf("U");
+            finish.Y = 25;
+            finish.X = 41;
 
             start.SetDistance(finish.X, finish.Y);
 
@@ -90,7 +90,7 @@ namespace A_star_Search_Algorithm
                 }
             }
 
-            Console.WriteLine("No Path Found!");
+            Console.WriteLine("Nenhum caminho encontrado!");
         }
 
         private static void AddCellValues(List<Char> l)
@@ -100,6 +100,11 @@ namespace A_star_Search_Algorithm
             l.Add('A');
             l.Add('T');
             l.Add('F');
+        }
+
+        private static void GenerateFriends(List<Tile> friends)
+        {
+
         }
 
         private static List<Tile> GetWalkableTiles(List<string> map, Tile currentTile, Tile targetTile)
@@ -124,7 +129,17 @@ namespace A_star_Search_Algorithm
             {
                 if (t.X >= 0 && t.X <= maxX && t.Y >= 0 && t.Y <= maxY)
                 {
-                    if (map[t.Y][t.X] == '3') possibleTiles.ElementAt(aux).Cost += 10; //Substituir o 10 por uma variável que armazena o valor do custo daquela celula
+
+
+                    _ = (map[t.Y][t.X] switch
+                    {
+                        'G' => possibleTiles.ElementAt(aux).Cost += 5,
+                        'A' => possibleTiles.ElementAt(aux).Cost += 15,
+                        'T' => possibleTiles.ElementAt(aux).Cost += 3,
+                        'P' => possibleTiles.ElementAt(aux).Cost += 10,
+                        _ => possibleTiles.ElementAt(aux).Cost += 1,
+                    });
+
                 }
 
                 aux += 1;
@@ -133,8 +148,8 @@ namespace A_star_Search_Algorithm
             return possibleTiles
                     .Where(tile => tile.X >= 0 && tile.X <= maxX)
                     .Where(tile => tile.Y >= 0 && tile.Y <= maxY)
-                    .Where(tile => map[tile.Y][tile.X] == ' ' || map[tile.Y][tile.X] == 'U' || map[tile.Y][tile.X] == 'G' 
-                    || map[tile.Y][tile.X] == 'P' || map[tile.Y][tile.X] == 'A' 
+                    .Where(tile => map[tile.Y][tile.X] == ' ' || map[tile.Y][tile.X] == 'U' || map[tile.Y][tile.X] == 'G'
+                    || map[tile.Y][tile.X] == 'P' || map[tile.Y][tile.X] == 'A'
                     || map[tile.Y][tile.X] == 'T' || map[tile.Y][tile.X] == 'F')
                     .ToList();
         }
