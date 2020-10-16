@@ -6,21 +6,22 @@ namespace A_star_Search_Algorithm
 {
     class Map
     {
-
-        // G = Grama, Custo: 5
-        // P = Paralelepipedo, Custo: 10
-        // A = Asfalto, Custo: 1
-        // E = Edificio, Custo: 0
-        // T = Terra, Custo: 3
-        // F = Amigo da barbie
-        // B = Barbie
-        List<string> map = new List<string>
+        public List<String> GenerateMap()
+        {
+            // G = Grama, Custo: 5
+            // P = Paralelepipedo, Custo: 10
+            // A = Asfalto, Custo: 1
+            // E = Edificio, Custo: 0
+            // T = Terra, Custo: 3
+            // F = Amigo da barbie
+            // B = Barbie
+            List<string> map = new List<string>
             {
                 "GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG",
                 "GGPPPPPPPPPPPPPPGGGGPPPPPAGGGGGGGGGGGGGGGG",
                 "GGPEEEEEPEEEEEEPGGGGPEEEGAGGGPPPPPPPPPPPGG",
                 "GGPEEEEEPEEEEEEPPPPPPEEAAAGGGPGGGGGGGGGPGG",
-        /*05*/  "GGPEEPEEPEEEFEEPEEEEGEEAAAGGGPGGGTTTGGGPGG", 
+        /*05*/  "GGPEEPEEPEEEFEEPEEEEGEEAAAGGGPGGGTTTGGGPGG",
                 "GGPPPPPPPPPPPPPPPEEEGEEEGAGGGPGGGTFTGGGPGG",
                 "GGPTTTTTTTTTTTTPPEEEGGGGGAGGGPGGGTTTGGGPGG",
                 "GGPTTTTTTTTTTTTPEEEEGEEEGAGGGPGGGTTTGGGPGG",
@@ -60,6 +61,11 @@ namespace A_star_Search_Algorithm
                 "GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG"
 
             };
+
+            return map;
+        }
+
+        
 
     }
 }
