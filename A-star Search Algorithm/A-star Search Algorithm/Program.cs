@@ -8,24 +8,24 @@ namespace A_star_Search_Algorithm
     {
         static void Main(string[] args)
         {
-            List<string> map = new List<string>
-            {
-                "A       5  ",
-                "030 0000000",
-                "           ",
-                "   |----|  ",
-                "   |    | B",
-                "---|    |  "
-            };
+            Map m = new Map();
+
+            List<Char> AuxChars = new List<Char>();
+
+            AddCellValues(AuxChars);
+
+            List<String> map = m.GenerateMap();
+
+            //AuxChars.Contains('B')
 
             var start = new Tile();
-            start.Y = map.FindIndex(x => x.Contains("A"));
-            start.X = map[start.Y].IndexOf("A");
+            start.Y = map.FindIndex(x => x.Contains("B"));
+            start.X = map[start.Y].IndexOf("B");
 
 
             var finish = new Tile();
-            finish.Y = map.FindIndex(x => x.Contains("B"));
-            finish.X = map[finish.Y].IndexOf("B");
+            finish.Y = map.FindIndex(x => x.Contains("U"));
+            finish.X = map[finish.Y].IndexOf("U");
 
             start.SetDistance(finish.X, finish.Y);
 
@@ -39,14 +39,14 @@ namespace A_star_Search_Algorithm
 
                 if (checkTile.X == finish.X && checkTile.Y == finish.Y)
                 {
-                    //We found the destination and we can be sure (Because the the OrderBy above)
-                    //That it's the most low cost option. 
                     var tile = checkTile;
-                    Console.WriteLine("Retracing steps backwards...");
+                    Console.WriteLine("Fazendo o caminho de volta");
                     while (true)
                     {
                         Console.WriteLine($"{tile.X} : {tile.Y}");
-                        if (map[tile.Y][tile.X] == ' ')
+                        if (map[tile.Y][tile.X] == 'G'
+                    || map[tile.Y][tile.X] == 'P' || map[tile.Y][tile.X] == 'A'
+                    || map[tile.Y][tile.X] == 'T' || map[tile.Y][tile.X] == 'F')
                         {
                             var newMapRow = map[tile.Y].ToCharArray();
                             newMapRow[tile.X] = '*';
@@ -55,9 +55,8 @@ namespace A_star_Search_Algorithm
                         tile = tile.Parent;
                         if (tile == null)
                         {
-                            Console.WriteLine("Map looks like :");
+                            Console.WriteLine("Mapa :");
                             map.ForEach(x => Console.WriteLine(x));
-                            Console.WriteLine("Done!");
                             return;
                         }
                     }
@@ -70,11 +69,10 @@ namespace A_star_Search_Algorithm
 
                 foreach (var walkableTile in walkableTiles)
                 {
-                    //We have already visited this tile so we don't need to do so again!
+                    //Ja passamos por essa célula então nao é necessario voltar
                     if (visitedTiles.Any(x => x.X == walkableTile.X && x.Y == walkableTile.Y))
                         continue;
 
-                    //It's already in the active list, but that's OK, maybe this new tile has a better value (e.g. We might zigzag earlier but this is now straighter). 
                     if (activeTiles.Any(x => x.X == walkableTile.X && x.Y == walkableTile.Y))
                     {
                         var existingTile = activeTiles.First(x => x.X == walkableTile.X && x.Y == walkableTile.Y);
@@ -86,13 +84,22 @@ namespace A_star_Search_Algorithm
                     }
                     else
                     {
-                        //We've never seen this tile before so add it to the list. 
+                        // Nao foi passada por esta célula antes, então adicione a lista de células ativas
                         activeTiles.Add(walkableTile);
                     }
                 }
             }
 
             Console.WriteLine("No Path Found!");
+        }
+
+        private static void AddCellValues(List<Char> l)
+        {
+            l.Add('G');
+            l.Add('P');
+            l.Add('A');
+            l.Add('T');
+            l.Add('F');
         }
 
         private static List<Tile> GetWalkableTiles(List<string> map, Tile currentTile, Tile targetTile)
@@ -126,25 +133,12 @@ namespace A_star_Search_Algorithm
             return possibleTiles
                     .Where(tile => tile.X >= 0 && tile.X <= maxX)
                     .Where(tile => tile.Y >= 0 && tile.Y <= maxY)
-                    .Where(tile => map[tile.Y][tile.X] == ' ' || map[tile.Y][tile.X] == 'B' || map[tile.Y][tile.X] == '3')
+                    .Where(tile => map[tile.Y][tile.X] == ' ' || map[tile.Y][tile.X] == 'U' || map[tile.Y][tile.X] == 'G' 
+                    || map[tile.Y][tile.X] == 'P' || map[tile.Y][tile.X] == 'A' 
+                    || map[tile.Y][tile.X] == 'T' || map[tile.Y][tile.X] == 'F')
                     .ToList();
         }
     }
 
-    class Tile
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int Cost { get; set; }
-        public int Distance { get; set; }
-        public int CostDistance => Cost + Distance;
-        public Tile Parent { get; set; }
 
-        //The distance is essentially the estimated distance, ignoring walls to our target. 
-        //So how many tiles left and right, up and down, ignoring walls, to get there. 
-        public void SetDistance(int targetX, int targetY)
-        {
-            this.Distance = Math.Abs(targetX - X) + Math.Abs(targetY - Y);
-        }
-    }
 }

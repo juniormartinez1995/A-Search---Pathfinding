@@ -15,7 +15,7 @@ namespace A_star_Search_Algorithm
             // T = Terra, Custo: 3
             // F = Amigo da barbie
             // B = Barbie
-            List<string> map = new List<string>
+            List<String> map = new List<String>
             {
                 "GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG",
                 "GGPPPPPPPPPPPPPPGGGGPPPPPAGGGGGGGGGGGGGGGG",
